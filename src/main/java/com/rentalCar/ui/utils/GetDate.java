@@ -4,12 +4,14 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class GetDate {
+public final class GetDate {
 
-    public static Integer getDay() {
+    private GetDate() {}
+
+    public static String getDay() {
         DateFormat dateFormat = new SimpleDateFormat("dd");
         Date date = new Date();
-        int day = Integer.parseInt(dateFormat.format(date));
+        String day = dateFormat.format(date);
         return day;
     }
 

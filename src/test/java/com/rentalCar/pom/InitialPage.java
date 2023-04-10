@@ -26,17 +26,17 @@ public class InitialPage extends InitialBasePage {
         }
     }
 
-    public void choosePickupDate(){
+    public void choosePickupDate() {
         pickupDateLbl.click();
-        WebElement nextMonth = webDriver.findElement(By.xpath("//*[@class='month-item']"));
-        List<WebElement> date = nextMonth.findElements(By.xpath("//*[@class='day-item']"));
-        for (WebElement e : date) {
-            if (date.size() == (GetDate.getDay()-1)){
-                e.click();
-                break;
-            }
-        }
-
-
+        List<WebElement> days = webDriver.findElements(By.xpath("//*[@class='month-item'][1]/div[3]/*"));
+        String today = GetDate.getDay();
+        String sixDaysLater = String.valueOf(Integer.parseInt(today) + 6);
+        webDriver.findElement(By.xpath("//*[@class='month-item'][1]/div[3]/*[" + today + "]")).click();
+        webDriver.findElement(By.xpath("//*[@class='month-item'][1]/div[3]/*[" + sixDaysLater +"]")).click();
     }
+
+    public void clickOnSearchButton(){
+        searchBtn.click();
+    }
+
 }
